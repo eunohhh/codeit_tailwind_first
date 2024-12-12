@@ -19,7 +19,7 @@ const data = [
 
 export default function Home() {
   return (
-    <section className="w-[680px] h-dvh mx-auto flex items-center justify-center">
+    <section className="max-w-[640px] h-dvh mx-auto flex items-center justify-center">
       <ul role="list" className="w-full flex flex-col divide-y divide-gray-100">
         {data.map((item) => (
           <li className="flex flex-row gap-4 justify-between py-5" key={item.name}>
@@ -30,7 +30,7 @@ export default function Home() {
                 <p className="text-sm text-gray-500">{item.email}</p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="hidden sm:flex flex-col gap-2">
               <p className="text-sm text-gray-900 font-medium">{item.role}</p>
               {item.status === 'Online' ? (
                 <div className="flex items-center gap-x-1 self-end">
