@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 const data = [
   {
     name: 'Michael Foster',
@@ -37,7 +38,7 @@ export default function Home() {
                   <div className="flex-none rounded-full bg-emerald-500/20 p-1">
                     <div className="size-1.5 rounded-full bg-emerald-500"></div>
                   </div>
-                  <p className="text-sm text-gray-500 self-end">{item.status}</p>
+                  <p className="text-sm text-gray-500">{item.status}</p>
                 </div>
               ) : (
                 <p className="text-sm text-gray-500 self-end">{item.status}</p>
