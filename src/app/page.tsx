@@ -1,3 +1,7 @@
+'use client';
+
+import { useDarkLightMode } from '@/useDarkLightMode';
+
 /* eslint-disable @next/next/no-img-element */
 const data = [
   {
@@ -19,8 +23,11 @@ const data = [
 ];
 
 export default function Home() {
+  const { isDarkMode, toggleDarkMode } = useDarkLightMode();
+
   return (
     <section className="max-w-[640px] h-dvh mx-auto flex items-center justify-center">
+      <button onClick={toggleDarkMode}>Toggle Dark Mode</button>
       <ul role="list" className="w-full flex flex-col divide-y divide-gray-100">
         {data.map((item) => (
           <li className="flex flex-row gap-4 justify-between py-5" key={item.name}>
