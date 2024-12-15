@@ -1,6 +1,6 @@
 'use client';
 
-import { useDarkLightMode } from '@/useDarkLightMode';
+import { useDarkLightMode } from '@/hooks/useDarkLightMode';
 
 /* eslint-disable @next/next/no-img-element */
 const data = [
@@ -23,7 +23,7 @@ const data = [
 ];
 
 export default function Home() {
-  const { isDarkMode, toggleDarkMode } = useDarkLightMode();
+  const { toggleDarkMode } = useDarkLightMode();
 
   return (
     <section className="max-w-[640px] h-dvh mx-auto flex items-center justify-center">
