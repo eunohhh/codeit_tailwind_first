@@ -1,5 +1,9 @@
 export { default as AppDownload } from './AppDownload';
 export { default as Button } from './Button';
 export { default as Header } from './Header';
+export { default as Hero } from './Hero';
+export { default as Invest } from './Invest';
+export { default as Invite } from './Invite';
 export { default as Logo } from './Logo';
+export { default as Notification } from './Notification';
 export { default as Play } from './Play';
