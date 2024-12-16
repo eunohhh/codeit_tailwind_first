@@ -1,3 +1,4 @@
+import { NextUIProvider } from '@nextui-org/react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark bg-gray-50 antialiased ${interSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <NextUIProvider>{children}</NextUIProvider>
+      </body>
     </html>
   );
 }
