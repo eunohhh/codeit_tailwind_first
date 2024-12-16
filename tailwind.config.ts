@@ -14,6 +14,9 @@ export default {
         'spin-slow': 'spin 4s linear infinite',
         'spin-reverse-slower': 'spin-reverse 6s linear infinite',
       },
+      colors: {
+        codeit_purple: '#6500c3',
+      },
     },
   },
   darkMode: 'selector',
