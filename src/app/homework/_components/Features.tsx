@@ -78,7 +78,7 @@ function Features() {
                   height="558"
                   fill="none"
                   aria-hidden="true"
-                  className="animate-spin-slower"
+                  className="animate-spin-slow"
                 >
                   <defs>
                     <linearGradient
@@ -96,6 +96,12 @@ function Features() {
                   <path
                     d="M1 279C1 125.465 125.465 1 279 1s278 124.465 278 278-124.465 278-278 278S1 432.535 1 279Z"
                     stroke="#13B5C8"
+                    opacity="0.2"
+                  ></path>
+                  <path
+                    d="M1 279C1 125.465 125.465 1 279 1"
+                    stroke="url(#:R1ll7qfja:)"
+                    strokeLinecap="round"
                   ></path>
                 </svg>
               </div>
