@@ -17,6 +17,7 @@ export default function ReactSpringBasicPage() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <animated.p>{props.width.to((x) => x.toFixed(0))}</animated.p>
       <div
         ref={ref}
         className="relative w-[200px] h-[50px] cursor-pointer border border-gray-500 rounded-md overflow-hidden"
