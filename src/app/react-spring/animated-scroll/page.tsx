@@ -5,8 +5,6 @@ import { animated, useScroll } from '@react-spring/web';
 function ReactSpringAnimatedScrollPage() {
   const props = useScroll();
 
-  console.log(props);
-
   return (
     <div>
       <div className="w-dvw h-[200vh]">
