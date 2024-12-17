@@ -18,7 +18,7 @@ function FramerMotionPage() {
   const { x, y } = useFollowPointer(followMouseRef);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <>
       <motion.div
         ref={followMouseRef}
         style={{ x, y }}
@@ -36,7 +36,7 @@ function FramerMotionPage() {
       >
         hello
       </motion.div>
-    </div>
+    </>
   );
 }
 
