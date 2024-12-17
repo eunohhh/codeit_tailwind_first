@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 
 const X_LINES = 40;
 
@@ -17,12 +17,22 @@ function ScrollingWavePage() {
     ['circle(0% at 50% 50%)', 'circle(100% at 50% 50%)'],
   );
 
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    console.log('Page scroll: ', latest);
+  });
+
   return (
     <>
-      <motion.div
-        className="bg-orange-400 fixed top-0 left-0 w-full h-full"
-        style={{ clipPath }}
-      ></motion.div>
+      <motion.div className="bg-orange-400 fixed top-0 left-0 w-full h-full" style={{ clipPath }}>
+        <h1 className="text-blue-600 text-[8vw] pl-[8vw]">
+          <span className="block overflow-hidden">
+            <motion.span>Aha!</motion.span>
+          </span>
+          <span className="block">
+            <motion.span>You found me!</motion.span>
+          </span>
+        </h1>
+      </motion.div>
       {new Array(PAGE_COUNT).fill(null).map((_, index) => (
         <div className="h-dvh w-dvw bg-gray-700" key={index} />
       ))}
