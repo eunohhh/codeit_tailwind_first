@@ -21,7 +21,7 @@ function DraggablePage() {
 
   return (
     <motion.div
-      className="flex w-1/2 gap-20"
+      className="flex w-1/2 gap-6 cursor-grab active:cursor-grabbing"
       ref={containerRef}
       drag="x"
       style={{ x: position }}
