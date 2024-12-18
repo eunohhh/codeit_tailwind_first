@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useMotionValueEvent, useTransform } from 'framer-motion';
 import { useRef } from 'react';
-import { useFollowPointer } from './_libs/useFollowPointer';
+import { useFollowPointer } from './_libs/hooks/useFollowPointer';
 
 function FramerMotionPage() {
   const xMotionValue = useMotionValue(0);
