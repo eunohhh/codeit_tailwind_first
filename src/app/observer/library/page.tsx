@@ -7,7 +7,7 @@ import { useInView } from 'react-intersection-observer';
 const PAGE_TITLES = ["Don't", 'you', 'just', 'hate', 'popups?'];
 
 function ObservedComponent({ title }: { title: string }) {
-  const { ref, inView } = useInView({ threshold: 0.5 });
+  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
 
   useEffect(() => {
     console.log(inView);
