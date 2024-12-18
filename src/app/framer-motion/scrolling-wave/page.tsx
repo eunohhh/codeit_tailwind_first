@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { useCallback, useState } from 'react';
 
 const X_LINES = 40;
 
@@ -10,26 +11,74 @@ const INITIAL_WIDTH = 20;
 
 function ScrollingWavePage() {
   const { scrollYProgress } = useScroll();
-  // scrollYProgress(0 ~ 1)에 따라 clipPath의 반경이 변하도록 설정
+
   const clipPath = useTransform(
     scrollYProgress,
     [0, 1],
     ['circle(0% at 50% 50%)', 'circle(100% at 50% 50%)'],
   );
+  const textMove = useTransform(scrollYProgress, [0, 0.7, 1], ['100%', '100%', '0%']);
 
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    console.log('Page scroll: ', latest);
+  const calculateWidth = useCallback((where: 'left' | 'right', scrollP: number) => {
+    return Array.from({ length: X_LINES }).map((_, i) => {
+      const percentilePosition = where === 'left' ? 1 - (i + 1) / X_LINES : (i + 1) / X_LINES;
+      return (
+        INITIAL_WIDTH / 4 + 40 * Math.cos(((percentilePosition - scrollP) * Math.PI) / 1.5) ** 32
+      );
+    });
+  }, []);
+
+  const [leftVarWidths, setLeftVarWidths] = useState<number[]>(calculateWidth('left', 0));
+
+  const [rightVarWidths, setRightVarWidths] = useState<number[]>(calculateWidth('right', 0));
+
+  useMotionValueEvent(scrollYProgress, 'change', (scrollP) => {
+    setLeftVarWidths(calculateWidth('left', scrollP));
+
+    setRightVarWidths(calculateWidth('right', scrollP));
   });
 
   return (
     <>
+      <div className="w-full h-full fixed flex inset-0 pointer-events-none z-10">
+        <motion.div className="w-full h-full flex flex-col items-start z-10 justify-between">
+          {leftVarWidths.map((width, i) => {
+            return (
+              <motion.div
+                key={i}
+                className="h-[1vh] bg-slate-300"
+                style={{
+                  width,
+                }}
+              />
+            );
+          })}
+        </motion.div>
+        <motion.div className="w-full h-full flex flex-col items-end z-10 justify-between">
+          {rightVarWidths.map((width, i) => {
+            return (
+              <motion.div
+                key={i}
+                className="h-[1vh] bg-slate-300"
+                style={{
+                  width,
+                }}
+              />
+            );
+          })}
+        </motion.div>
+      </div>
       <motion.div className="bg-orange-400 fixed top-0 left-0 w-full h-full" style={{ clipPath }}>
-        <h1 className="text-blue-600 text-[8vw] pl-[8vw]">
+        <h1 className="text-blue-600 font-bold text-[8vw] pl-[8vw]">
           <span className="block overflow-hidden">
-            <motion.span>Aha!</motion.span>
+            <motion.span className="block" style={{ y: textMove }}>
+              Aha!
+            </motion.span>
           </span>
-          <span className="block">
-            <motion.span>You found me!</motion.span>
+          <span className="block overflow-hidden">
+            <motion.span className="block" style={{ y: textMove }}>
+              You found me!
+            </motion.span>
           </span>
         </h1>
       </motion.div>
